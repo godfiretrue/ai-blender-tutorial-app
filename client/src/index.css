@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-bg: #050508;
+  --color-cyber-panel: #0a0a12;
+  --color-cyber-cyan: #00f5ff;
+  --color-cyber-magenta: #ff2bd6;
+  --color-cyber-purple: #8b5cf6;
+  --font-display: "Orbitron", sans-serif;
+  --font-body: "Rajdhani", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-bg text-gray-100 font-body antialiased min-h-screen;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .cyber-grid-bg {
+    background-image:
+      linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.25), inset 0 0 0 1px rgba(0, 245, 255, 0.2);
+  }
+
+  .glow-magenta {
+    box-shadow: 0 0 20px rgba(255, 43, 214, 0.25), inset 0 0 0 1px rgba(255, 43, 214, 0.2);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
+  }
+
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px
+    );
+    pointer-events: none;
+  }
+
+  .glitch {
+    position: relative;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .glitch::before {
+    color: var(--color-cyber-cyan);
+    animation: glitch-1 2.5s infinite linear alternate-reverse;
+    clip-path: inset(20% 0 60% 0);
+  }
+
+  .glitch::after {
+    color: var(--color-cyber-magenta);
+    animation: glitch-2 3s infinite linear alternate-reverse;
+    clip-path: inset(60% 0 10% 0);
+  }
+
+  @keyframes glitch-1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    60% { transform: translate(-1px, 2px); }
+    80% { transform: translate(1px, -2px); }
+    100% { transform: translate(0); }
+  }
+
+  @keyframes glitch-2 {
+    0% { transform: translate(0); }
+    25% { transform: translate(2px, -1px); }
+    50% { transform: translate(-2px, 1px); }
+    75% { transform: translate(1px, 2px); }
+    100% { transform: translate(0); }
+  }
+}
+
+.markdown-body h2 {
+  @apply text-cyber-cyan text-xl mt-6 mb-3 font-display;
+}
+
+.markdown-body h3 {
+  @apply text-cyber-magenta text-lg mt-4 mb-2;
+}
+
+.markdown-body p {
+  @apply text-gray-300 mb-3 leading-relaxed;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  @apply list-disc list-inside text-gray-300 space-y-2 mb-4 ml-2;
+}
+
+.markdown-body strong {
+  @apply text-white;
+}
+
+.markdown-body table {
+  @apply w-full border-collapse my-4 text-sm;
+}
+
+.markdown-body th,
+.markdown-body td {
+  @apply border border-cyber-cyan/30 px-3 py-2 text-left;
+}
+
+.markdown-body th {
+  @apply bg-cyber-panel text-cyber-cyan;
+}
