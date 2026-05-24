@@ -1,6 +1,8 @@
-# Blender Cyber Hub
+# AI Blender Tutorial App
 
 A static Blender learning site with cyberpunk UI — tutorials with YouTube embeds, topic guides, cheat sheets, resources, and **local progress tracking** (no server or database).
+
+**Live repo:** https://github.com/godfiretrue/ai-blender-tutorial-app
 
 ## Stack
 
@@ -12,7 +14,8 @@ A static Blender learning site with cyberpunk UI — tutorials with YouTube embe
 ## Run
 
 ```bash
-cd C:\Users\HP\Projects\blender-cyber-hub
+git clone https://github.com/godfiretrue/ai-blender-tutorial-app.git
+cd ai-blender-tutorial-app
 npm install
 npm run dev
 ```
